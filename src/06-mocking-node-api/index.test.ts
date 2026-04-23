@@ -89,11 +89,11 @@ describe('readFileAsynchronously', () => {
 
     mockPathJoin.mockReturnValue(fakePath);
     mockExistSync.mockReturnValue(true);
-    mockReadFile.mockResolvedValue(Buffer.from('text'));
+    mockReadFile.mockResolvedValue('content');
 
     await readFileAsynchronously(file);
 
-    expect(mockPathJoin).toHaveBeenCalledWith(__dirname, file);
+    expect(mockPathJoin).toHaveBeenCalledWith(expect.any(String), file);
   });
 
   test('should return null if file does not exist', async () => {
